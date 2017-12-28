@@ -1,0 +1,1 @@
+### PrayerCoin contract source
