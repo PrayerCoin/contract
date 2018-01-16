@@ -1,6 +1,7 @@
-pragma solidity ^0.4.8;
+pragma solidity ^0.4.18;
 
 import "./PrayerCoinToken.sol";
+import "./SafeMath.sol";
 
 contract Standard {
     function balanceOf(address _owner) public constant returns (uint256);
@@ -8,6 +9,7 @@ contract Standard {
 }
 
 contract PrayerCoin is PrayerCoinToken {
+  using SafeMath for uint256;
   address public god;
 
   string public name = "PrayerCoin";
@@ -17,7 +19,7 @@ contract PrayerCoin is PrayerCoinToken {
 
   uint256 public publicSupply = 666666666;
  
-  uint16 public PRAY_ETH_RATIO = 1000;
+  uint public PRAY_ETH_RATIO = 1000 finney;
 
   uint256 public totalDonations = 0;
   uint256 public totalPrayers = 0;
@@ -58,16 +60,23 @@ contract PrayerCoin is PrayerCoinToken {
     if (msg.value == 0) { return; }
 
     god.transfer(msg.value);
+
     totalDonations += msg.value;
+    
+    uint256 prayersIssued = msg.value.mul(PRAY_ETH_RATIO);
 
-    uint256 prayersIssued = (msg.value * PRAY_ETH_RATIO);
+    if (totalPrayers <= 666666) {
+        uint256 multiplier = 6;
+        if (totalPrayers <= 666) {
+            multiplier = 66;
+        }
+        prayersIssued = prayersIssued.mul(1 + multiplier.div(100));
+    }
 
-    totalPrayers+= prayersIssued;
+    totalPrayers += prayersIssued;
     balances[msg.sender] += prayersIssued;
 
     Transfer(address(this), msg.sender, prayersIssued);
   }
  
 }
-
-
