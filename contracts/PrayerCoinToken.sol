@@ -44,6 +44,10 @@ contract PrayerCoinToken is Token {
         return balances[_owner];
     }
 
+    function getBalance(address _owner) view public returns (uint256 balance) {
+        return balances[_owner];
+    }
+
     function approve(address _spender, uint256 _value) public returns (bool success) {
         allowed[msg.sender][_spender] = _value;
         Approval(msg.sender, _spender, _value);

@@ -13,18 +13,20 @@ contract PrayerCoin is PrayerCoinToken {
   address public god;
 
   string public name = "PrayerCoin";
-  uint8 public decimals = 0;
+  uint8 public decimals = 18;
   string public symbol = "PRAY";
   string public version = 'H1.0';  
 
   uint256 public publicSupply = 666666666;
  
-  uint public PRAY_ETH_RATIO = 1000 finney;
+  uint public PRAY_ETH_RATIO = 6666;
+  uint public PRAY_ETH_RATIO_BONUS1 = 7106;
+  uint public PRAY_ETH_RATIO_BONUS2 = 11066;
 
   uint256 public totalDonations = 0;
   uint256 public totalPrayers = 0;
 
-  bool private acceptingDonations = false;
+  bool private acceptingDonations = true;
   
   modifier divine {
     require(msg.sender == god);
@@ -63,14 +65,16 @@ contract PrayerCoin is PrayerCoinToken {
 
     totalDonations += msg.value;
     
-    uint256 prayersIssued = msg.value.mul(PRAY_ETH_RATIO);
+    uint256 prayersIssued = 0;
 
-    if (totalPrayers <= 666666) {
-        uint256 multiplier = 6;
-        if (totalPrayers <= 666) {
-            multiplier = 66;
+    if (totalPrayers <= (666666 * 1 ether)) {
+        if (totalPrayers <= (66666 * 1 ether)) {
+            prayersIssued = msg.value.mul(PRAY_ETH_RATIO_BONUS2);
+        } else {
+            prayersIssued = msg.value.mul(PRAY_ETH_RATIO_BONUS1);
         }
-        prayersIssued = prayersIssued.mul(1 + multiplier.div(100));
+    } else {
+        prayersIssued = msg.value.mul(PRAY_ETH_RATIO);
     }
 
     totalPrayers += prayersIssued;
