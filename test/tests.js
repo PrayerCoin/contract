@@ -6,11 +6,14 @@ contract("PrayerCoin", (accounts) => {
     const acc3 = accounts[3];
     const acc4 = accounts[4];
     const acc5 = accounts[5];
+    const acc6 = accounts[6];
     it("First account should recieve 666,666,666 tokens", async () => {
         var meta = await PrayerCoin.deployed();
         var godBalance = await meta.balanceOf.call(accounts[0]);
         assert.equal(godBalance.valueOf(), 666666666, "666,666,666 not in first account");
-    })
+    });
+    
+
     it("Rates correct (11066, 7106, 6666)", async () => {
         var meta = await PrayerCoin.deployed();
         await meta.sendTransaction({ from: acc1, value: web3.toWei(15.4, "ether") });
@@ -29,3 +32,15 @@ contract("PrayerCoin", (accounts) => {
         assert.equal(web3.fromWei(acc4balance.valueOf(), 'ether'), 50 * 7106, "50 * 7106");
     })
 })
+
+
+contract("PrayerCoin", (accounts) => {
+    const acc1 = accounts[1];
+    it("Payout test", async () => {
+        var meta = await PrayerCoin.deployed();
+        await meta.fiatSend(acc1, web3.toWei(0.4, "ether"), 100);
+        console.log(4444);
+        var acc1balance = await meta.balanceOf.call(acc1);
+        assert.equal(web3.fromWei(acc1balance.valueOf(), 'ether'), 0.4 * 100, "not workrkk");
+    })
+});

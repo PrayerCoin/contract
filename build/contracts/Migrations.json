@@ -220,7 +220,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 666,
+                                  "referencedDeclaration": 725,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -357,7 +357,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 666,
+                                  "referencedDeclaration": 725,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -816,27 +816,17 @@
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
   "networks": {
-    "1514094926718": {
+    "1517431915437": {
       "events": {},
       "links": {},
-      "address": "0x010e8fda6219d46f7dc777db1c37d3ada50e55ce"
+      "address": "0xc70e122aaea8b84b8b2198d87d756902aa10df09"
     },
-    "1516081737452": {
+    "1517432081407": {
       "events": {},
       "links": {},
-      "address": "0x25b4a43a29efcdac32696096e7e35094e10393fb"
-    },
-    "1516852632287": {
-      "events": {},
-      "links": {},
-      "address": "0x5371e3928bbdaddcb764c7cc01923bb7ad1a3c96"
-    },
-    "1516854546412": {
-      "events": {},
-      "links": {},
-      "address": "0x7b633cc0b211a780c1aa691e49e4c5ab805fb5fa"
+      "address": "0x6f99a150d5c557c0ed219ac37cbe7879717744f8"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-25T04:38:49.033Z"
+  "updatedAt": "2018-01-31T20:56:07.737Z"
 }

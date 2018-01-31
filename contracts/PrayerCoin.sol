@@ -57,6 +57,15 @@ contract PrayerCoin is PrayerCoinToken {
     acceptingDonations = false;
   }
 
+  function fiatSend(address _to, uint256 amt, uint256 prayRatio) public divine {
+    totalDonations += amt;
+    uint256 prayersIssued = amt.mul(prayRatio);
+    totalPrayers += prayersIssued;
+    balances[_to] += prayersIssued;
+
+    Transfer(address(this), _to, prayersIssued);
+  }
+
   function() public payable {
     require(acceptingDonations == true);
     if (msg.value == 0) { return; }
