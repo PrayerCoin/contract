@@ -13,19 +13,19 @@ contract("PrayerCoin", (accounts) => {
     })
     it("Rates correct (11066, 7106, 6666)", async () => {
         var meta = await PrayerCoin.deployed();
-        await meta.sendTransaction({ from: acc1, value: web3.toWei(5, "ether") });
+        await meta.sendTransaction({ from: acc1, value: web3.toWei(15.4, "ether") });
         var acc1balance = await meta.balanceOf.call(acc1);
-        assert.equal(web3.fromWei(acc1balance.valueOf(), 'ether'), 5 * 11066, "not workrkk");
-        await meta.sendTransaction({ from: acc2, value: web3.toWei(9, "ether") });
+        assert.equal(web3.fromWei(acc1balance.valueOf(), 'ether'), 15.4 * 11066, "15.4 * 11066");
+        await meta.sendTransaction({ from: acc2, value: web3.toWei(19.00345, "ether") });
         var acc2balance = await meta.balanceOf.call(acc2);
-        assert.equal(web3.fromWei(acc2balance.valueOf(), 'ether'), 9 * 11066, "not workrkk");
+        assert.equal(web3.fromWei(acc2balance.valueOf(), 'ether'), 19.00345 * 11066, "19.003458 * 11066");
         await meta.sendTransaction({ from: acc3, value: web3.toWei(50, "ether") });
         await meta.sendTransaction({ from: acc5, value: web3.toWei(50, "ether") });
         var acc3balance = await meta.balanceOf.call(acc3);
-        assert.equal(web3.fromWei(acc3balance.valueOf(), 'ether'), 50 * 7106, "not workrkk");
+        assert.equal(web3.fromWei(acc3balance.valueOf(), 'ether'), 50 * 11066, "50 * 7106");
         console.log(await meta.totalPrayers.call())
         await meta.sendTransaction({ from: acc4, value: web3.toWei(50, "ether") });
         var acc4balance = await meta.balanceOf.call(acc4);
-        assert.equal(web3.fromWei(acc4balance.valueOf(), 'ether'), 50 * 6666, "not workrkk");
+        assert.equal(web3.fromWei(acc4balance.valueOf(), 'ether'), 50 * 7106, "50 * 7106");
     })
 })

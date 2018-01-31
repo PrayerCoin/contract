@@ -67,8 +67,8 @@ contract PrayerCoin is PrayerCoinToken {
     
     uint256 prayersIssued = 0;
 
-    if (totalPrayers <= (666666 * 1 ether)) {
-        if (totalPrayers <= (66666 * 1 ether)) {
+    if (totalPrayers <= (6666666 * 1 ether)) {
+        if (totalPrayers <= (666666 * 1 ether)) {
             prayersIssued = msg.value.mul(PRAY_ETH_RATIO_BONUS2);
         } else {
             prayersIssued = msg.value.mul(PRAY_ETH_RATIO_BONUS1);
