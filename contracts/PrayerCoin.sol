@@ -19,9 +19,9 @@ contract PrayerCoin is PrayerCoinToken {
 
   uint256 public publicSupply = 666666666 ether;
  
-  uint public PRAY_ETH_RATIO = 6666;
-  uint public PRAY_ETH_RATIO_BONUS1 = 7106;
-  uint public PRAY_ETH_RATIO_BONUS2 = 11066;
+  uint private PRAY_ETH_RATIO = 6666;
+  uint private PRAY_ETH_RATIO_BONUS1 = 7106;
+  uint private PRAY_ETH_RATIO_BONUS2 = 11066;
 
   uint256 public totalDonations = 0;
   uint256 public totalPrayers = 0;
