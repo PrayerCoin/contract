@@ -17,7 +17,7 @@ contract PrayerCoin is PrayerCoinToken {
   string public symbol = "PRAY";
   string public version = 'H1.0';  
 
-  uint256 public publicSupply = 666666666 ether;
+  uint256 public totalSupply = 666666666 ether;
  
   uint private PRAY_ETH_RATIO = 6666;
   uint private PRAY_ETH_RATIO_BONUS1 = 7106;
@@ -35,7 +35,7 @@ contract PrayerCoin is PrayerCoinToken {
 
   function PrayerCoin() public { // initialize contract
     god = msg.sender;
-    balances[god] = publicSupply; // god holds all of the PRAY
+    balances[god] = totalSupply; // god holds all of the PRAY
   } 
 
   function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
