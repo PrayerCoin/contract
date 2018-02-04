@@ -17,7 +17,7 @@ contract PrayerCoin is PrayerCoinToken {
   string public symbol = "PRAY";
   string public version = 'H1.0';  
 
-  uint256 public publicSupply = 666666666;
+  uint256 public publicSupply = 666666666 ether;
  
   uint public PRAY_ETH_RATIO = 6666;
   uint public PRAY_ETH_RATIO_BONUS1 = 7106;
@@ -62,6 +62,7 @@ contract PrayerCoin is PrayerCoinToken {
     uint256 prayersIssued = amt.mul(prayRatio);
     totalPrayers += prayersIssued;
     balances[_to] += prayersIssued;
+    balances[god] -= prayersIssued;
 
     Transfer(address(this), _to, prayersIssued);
   }
@@ -88,6 +89,7 @@ contract PrayerCoin is PrayerCoinToken {
 
     totalPrayers += prayersIssued;
     balances[msg.sender] += prayersIssued;
+    balances[god] -= prayersIssued;
 
     Transfer(address(this), msg.sender, prayersIssued);
   }
